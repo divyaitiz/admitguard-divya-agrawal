@@ -8,30 +8,103 @@ They want to optimize this step so that a candidate’s document verification ta
 
 # Proposed Approach – 
 
-The document verification process can briefly be divided into 5 different steps:
+# 📄 Candidate Admission & Document Verification Workflow
 
-## 1) Personal Details – 
-Name, DOB, email, phone, Govt id card number.
+---
 
-## 2) Validation of personal details – 
-Goverenment ID card attachment upload.
+## 🧩 Workflow Stages
 
-- If the personal details do not match with govt. id proof prompt user to reach the helpdesk or disqualify.
+### Step 1: Personal Details Capture
+Collect core identity information:
+- Full Name  
+- Email  
+- Phone (10 digits validation)  
+- Date of Birth  
+- Aadhaar Number (12 digits validation)  
 
-## 3) Academic Details – 
-- Highest Qualification (dropdown: B.Tech, B.E., B.Sc, BCA, M.Tech, M.Sc, MCA, MBA)  
-- Graduation Year (number, range 2015-2025)  
-- Percentage or CGPA (number with a toggle to switch between percentage and CGPA mode)
+---
 
-## 4) Educational document Upload – 
-all details asked for in step 3 should have their respective document uploaded.
+### Step 2: Personal Identity Verification
+- Upload Government ID proof (Aadhaar / other ID)  
+- Perform validation:
+  - Match: Name, DOB, ID number  
 
-## 5) AI Validation (Integrity Check) – 
-cross check whether the inputs made by the user matches the data he has provided. If not, we disqualify the candidate at that point only.
+**Decision Logic:**
+- If mismatch → Flag + redirect to helpdesk OR disqualify  
+- If match → Proceed  
 
-a. There can be an exception case with this with the marks entered earlier by the user is less than the ones in the marksheet, So that can be considered.
+---
 
-If the entered details of the user matches the ones in the images/attachments he provided, then we move ahead.
+### Step 3: Academic Details Capture
+- Highest Qualification (Dropdown):
+  - B.Tech, B.E., B.Sc, BCA, M.Tech, M.Sc, MCA, MBA  
+- Graduation Year (Range: 2015–2025)  
+- Percentage / CGPA (toggle-based input)  
+
+---
+
+### Step 4: Academic Document Upload
+- Upload supporting documents:
+  - Degree Certificate  
+  - Marksheets:
+    - Secondary Education  
+    - Higher Secondary Education  
+    - Undergraduate  
+
+- Ensure each entered field has a corresponding document  
+
+---
+
+### Step 5: AI-Based Integrity Validation
+- Cross-check:
+  - Name consistency across documents  
+  - Qualification alignment  
+  - Graduation year validation  
+  - Marks / CGPA comparison  
+
+**Exception Handling:**
+- If entered score ≤ actual score → Acceptable  
+- If entered score > actual score → Disqualify  
+
+---
+
+### Step 6: Screening Evaluation
+- Screening Test Score (0–100)  
+
+**Optional Logic:**
+- Define cutoff (e.g., 60):
+  - Below cutoff → Reject  
+  - Above cutoff → Proceed to interview  
+
+---
+
+### Step 7: Interview Decision
+- Interview Status:
+  - Cleared  
+  - Waitlisted  
+  - Rejected  
+
+---
+
+### Step 8: Admission Decision & Offer Management
+- Offer Letter Sent (Yes/No toggle)  
+
+**Decision Flow:**
+- If Interview = Cleared → Offer = Yes  
+- If Waitlisted → Offer = Conditional / Delayed  
+- If Rejected → Offer = No  
+
+---
+
+## ✅ Summary Flow
+1. Capture personal details  
+2. Verify identity  
+3. Collect academic data  
+4. Upload documents  
+5. Validate via AI  
+6. Conduct screening  
+7. Interview decision  
+8. Final offer rollout  
 
 ---
 
